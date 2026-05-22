@@ -2,15 +2,11 @@
 
 
 
-A multiplayer racing prototype built in \*\*Unreal Engine 5.6\*\*, focused mainly on learning and implementing multiplayer logic using \*\*Steam Online Subsystem\*\* and a \*\*listen server\*\* setup.
+A multiplayer racing prototype built in \*\*Unreal Engine 5.6\*\*, focused on learning and implementing multiplayer logic using the \*\*Steam Online Subsystem\*\* with a \*\*listen server\*\* setup.
 
 
 
-This project is not focused on advanced racing mechanics or final game polish. The main goal of the project is to practice multiplayer flow, session creation, joining, lobby handling, server travel, replicated gameplay, countdown logic, and win/loss handling.
-
-
-
-\---
+This project is mainly focused on multiplayer flow, session handling, lobby logic, server travel, replicated countdown, vehicle spawning, and win/loss handling.
 
 
 
@@ -18,19 +14,15 @@ This project is not focused on advanced racing mechanics or final game polish. T
 
 
 
-This is a simple multiplayer racing game where one player hosts a Steam listen-server session and other players can join. The host is also a player in the race.
+This is a simple Steam multiplayer racing game where one player hosts a listen-server session and also participates as a player. Other players can join the session, wait in the lobby, and then travel together to the race map.
 
 
 
-The game starts from a menu map where players can either create a session or join an existing session. When a session is created, the host moves to a lobby map with their car. Other players can join the lobby, see the session/lobby information, and wait before the race begins.
+The game starts from a menu map with two main options: \*\*Start Game\*\* and \*\*Join Game\*\*. The host can select the number of players before creating the session. After the session is created, the host moves to the lobby map with their car. Joining players also spawn in the lobby, where everyone can drive around while waiting for the race to start.
 
 
 
-After the required number of players join, the game travels to the race map. A countdown starts, then players can drive their cars and race to the finish line. When one player wins, the winner receives a “YOU WON!” message and all other players receive a “YOU LOST!” message. Player input is disabled after the race ends.
-
-
-
-\---
+Once the required players have joined, the server travels everyone to the race map. A countdown starts, then players race to the finish line. The first player to reach the finish trigger wins. The winner sees \*\*"YOU WON!"\*\*, while all other players see \*\*"YOU LOST!"\*\*. After the result appears, player input is disabled.
 
 
 
@@ -38,61 +30,37 @@ After the required number of players join, the game travels to the race map. A c
 
 
 
-\- Unreal Engine 5.6 project
+\- Steam session creation and joining
 
-\- Steam multiplayer session creation
+\- Listen server multiplayer
 
-\- Steam session joining
+\- Host also acts as a player
 
-\- Listen server multiplayer setup
+\- Start menu with Start Game and Join Game options
 
-\- Host is also a player
+\- Player count selection, defaulting to 2 players
 
-\- Start menu with:
-
-&#x20; - Start Game button
-
-&#x20; - Join Game button
-
-&#x20; - Player count selection
-
-\- Default player count is 2
-
-\- Supports player count selection such as 3, 4, and 5
+\- Support for 3, 4, and 5 player sessions
 
 \- Lobby map with spawned player cars
 
-\- Players can drive around in the lobby while waiting
-
 \- Lobby banner showing the session ID
+
+\- Players can drive around while waiting in the lobby
 
 \- Server travel from lobby map to race map
 
-\- Race countdown before movement starts
+\- 5-second countdown before the race starts
 
-\- Vehicle movement using:
-
-&#x20; - W = accelerate
-
-&#x20; - S = reverse/brake
-
-&#x20; - A/D = steer
-
-&#x20; - Spacebar = handbrake
+\- Vehicle driving controls
 
 \- Mouse-controlled third-person vehicle camera
 
 \- Finish-line win trigger
 
-\- Winner announcement UI
+\- Winner and loser announcement UI
 
-\- Loser announcement UI
-
-\- Input disables after race result
-
-
-
-\---
+\- Input disabled after race result
 
 
 
@@ -104,51 +72,49 @@ After the required number of players join, the game travels to the race map. A c
 
 Start Map
 
-↓
+&#x20; ├─ Start Game
 
-Start Game / Join Game
+&#x20; │   ├─ Select number of players
 
-↓
+&#x20; │   ├─ Create Steam session
 
-Create or join Steam session
+&#x20; │   └─ Travel to Lobby Map
 
-↓
+&#x20; │
+
+&#x20; └─ Join Game
+
+&#x20;     ├─ Search available sessions
+
+&#x20;     └─ Join Lobby Map
+
+
 
 Lobby Map
 
-↓
+&#x20; ├─ Host and clients spawn with cars
 
-Players wait and drive around
+&#x20; ├─ Players can drive around while waiting
 
-↓
+&#x20; ├─ Session ID is displayed on lobby banner
 
-Required players join
+&#x20; └─ Server travels everyone to Race Map
 
-↓
 
-Server travels to Race Map
 
-↓
+Race Map
 
-5-second countdown
+&#x20; ├─ 5-second countdown
 
-↓
+&#x20; ├─ Race starts
 
-Race starts
+&#x20; ├─ Players drive to finish line
 
-↓
+&#x20; ├─ First player reaching finish trigger wins
 
-First player reaches finish trigger
+&#x20; ├─ Winner sees "YOU WON!"
 
-↓
+&#x20; ├─ Others see "YOU LOST!"
 
-Winner sees "YOU WON!"
-
-↓
-
-Other players see "YOU LOST!"
-
-↓
-
-Inputs disabled
+&#x20; └─ Player input is disabled
 
